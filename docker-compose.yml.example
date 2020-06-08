@@ -1,0 +1,29 @@
+version: "3.6"
+services:
+  poderio-recommender-proxy:
+    build: .
+    expose:
+      - "9007"
+    ports:
+      - "9201:9007"
+    environment:
+      ENVIRONMENT:
+      SENTRY_DSN:
+      JWT_SECRET:
+      CH_PROXY_HOST:
+      CH_PROXY_PORT:
+      CH_PROXY_BP_ASSET_ID_TABLE:
+      CH_PROXY_IDENTIFIERS_TABLE:
+      CH_PROXY_CATEGORIES_TABLE:
+      CH_PROXY_EVENTS_TABLE:
+      CH_PROXY_TRAITS_TABLE:
+      CH_PROXY_BP_P_TABLE:
+      CH_PROXY_USER:
+      CH_PROXY_PASSWORD:
+      CH_PROXY_DATABASE:
+      CH_PROXY_QUERY_TIMEOUT:
+      CH_PROXY_QUERY_RETRIES:
+      ARANGODB_HOST:
+      ARANGODB_PORT:
+      ARANGODB_DB:
+      ARANGODB_NAME:

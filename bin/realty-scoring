@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+
+import argparse
+
+try:
+    from realty_scoring.app import application
+except ImportError:
+    # Add parent directory to Python path and retry
+    import os
+    import sys
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    parent_dir = os.path.dirname(script_dir)
+    sys.path.append(parent_dir)
+    from realty_scoring.app import application
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser("Start realty-scoring")
+    parser.add_argument("--host", default="localhost")
+    parser.add_argument("--port", type=int, default=8000)
+    args = parser.parse_args()
+
+    from wsgiref import simple_server
+    server = simple_server.make_server(args.host, args.port, application)
+    print("Development server just started on http://{}:{}".format(args.host, args.port))
+    server.serve_forever()
