@@ -1,13 +1,14 @@
 import logging
 
-from sklearn.externals import joblib
+import os
+import joblib
 
 logger = logging.getLogger('realty_scoring')
 
 
 def load_model(name):
     try:
-        return joblib.load('ml_models/' + name)
+        return joblib.load(os.getcwd() + '/ml_models/' + name)
     except Exception as e:
         logger.exception(str(e))
         return None
