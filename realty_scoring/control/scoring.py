@@ -21,4 +21,4 @@ class SaleScorer:
     @classmethod
     def predict(cls, to_predict):
         prediction = cls._model.predict(to_predict)
-        return prediction[0]
+        return round(prediction[0], 2)
