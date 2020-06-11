@@ -18,7 +18,7 @@ class RequestValidator:
                 float(req.params['total_area']),
                 int(req.params['number_of_rooms']),
                 settings.WALL_TYPE_DICT[req.params['walling']],
-                bool(req.params['resale'])
+                bool(req.get('resale', False))
             ]]
         except KeyError as e:
             logger.warning(str(e))
