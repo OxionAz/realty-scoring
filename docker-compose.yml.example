@@ -1,29 +1,19 @@
 version: "3.6"
 services:
-  poderio-recommender-proxy:
-    build: .
+  realty-scoring:
+    build:
+      context: .
+      args:
+        - PROJECT_NAME=realty-scoring
     expose:
-      - "9007"
+      - "9001"
     ports:
-      - "9201:9007"
+      - "8000:9001"
     environment:
-      ENVIRONMENT:
-      SENTRY_DSN:
-      JWT_SECRET:
-      CH_PROXY_HOST:
-      CH_PROXY_PORT:
-      CH_PROXY_BP_ASSET_ID_TABLE:
-      CH_PROXY_IDENTIFIERS_TABLE:
-      CH_PROXY_CATEGORIES_TABLE:
-      CH_PROXY_EVENTS_TABLE:
-      CH_PROXY_TRAITS_TABLE:
-      CH_PROXY_BP_P_TABLE:
-      CH_PROXY_USER:
-      CH_PROXY_PASSWORD:
-      CH_PROXY_DATABASE:
-      CH_PROXY_QUERY_TIMEOUT:
-      CH_PROXY_QUERY_RETRIES:
-      ARANGODB_HOST:
-      ARANGODB_PORT:
-      ARANGODB_DB:
-      ARANGODB_NAME:
+      ENVIRONMENT: development
+      BIND_PORT: 8000
+      SERVICE_THREADS: 5
+      DATABASE_URL:
+      CITIES_DICT:
+      DISTRICTS_DICT:
+      WALL_TYPE_DICT:
